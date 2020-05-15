@@ -3,6 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import './assets/app.css';
+import 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 Vue.config.productionTip = false
 
