@@ -14,6 +14,8 @@
                 <p class="price">
                     {{product.price}}
                 </p>
+                <button @click="edit">Edit Product</button>
+                <router-view></router-view>
             </div>
         </div>
     </div>
@@ -34,6 +36,11 @@
                 this.product = response.data.products.filter(data => data.id == this.$route.params.id)[0]
                 this.product.image = '/' + this.product.image;
             })
+        },
+        methods: {
+            edit() {
+                this.$router.push({name: 'Edit'})
+            }
         }
     }
 </script>
