@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <script src="./node_modules/vuex/dist/vuex.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{header}}</h1>
+        <h2>{{welcome}}</h2>
+        <h3>{{counter}}</h3>
+        <button @click="increment">Press Me</button>
+    </div>
+    <script>
+        const store = new Vuex.Store({
+            state: {
+                msg: 'Hello World',
+                count: 0
+            },
+            mutations: {
+                increment(state)  {
+                    state.count++
+                }
+            }
+        })
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    header: 'Vuex app'
+                }
+            },
+            computed: {
+                welcome() {
+                    return store.state.msg
+                },
+                counter() {
+                    return store.state.count;
+                }
+            },
+            methods: {
+                increment() {
+                    store.commit('increment');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
